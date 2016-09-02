@@ -1,0 +1,156 @@
+<html ng-app="MainApp">
+<head>
+	<title>Інтернет-магазин</title>
+	<meta charset="utf-8">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="Lib/angular.js"></script>
+	<link rel="stylesheet" type="text/css" href="Lib/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="Lib/bootstrap-theme.css">
+	<link rel="stylesheet" type="text/css" href="Lib/font-awesome.css">
+	<link rel="stylesheet" type="text/css" href="Lib/style.css">
+	<script src="Modules/cart.js"></script>
+	<script src="Modules/product.js"></script>
+	<script src="Modules/main.js"></script>
+	<script src="Modules/order.js"></script>
+	<script src="Modules/pagination.js"></script>
+</head>
+	
+	<body ng-controller="MainCtrl" class="adminBody" load-current>
+
+
+		<div class="row">
+			<div class="box1 col-md-12"></div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12 box2">
+				<div class="row">
+					<div class="col-md-offset-6 col-md-1 col-sm-offset-5 col-sm-1 col-xs-2">
+						<a href="#">Магазини</a>
+					</div>
+					<div class="col-md-1 col-sm-1 col-xs-2">
+						<a href="#">Гарантія</a>
+					</div>
+					<div class="col-md-1 col-sm-1 col-xs-2">
+						<a href="#">Доставка</a>
+					</div>
+					<div class="col-md-1 col-sm-1 col-xs-2">
+						<a href="#">Оплата</a>
+					</div>
+					<div class="col-md-1 col-sm-1 col-xs-2">
+						<a href="#">Кредит</a>
+					</div>
+					<div class="col-md-1 col-sm-1 col-xs-2">
+						<a href="#">Контакти</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12 box3">
+				<div class="row">
+					<div class="col-md-offset-1 col-md-3 col-sm-offset-1 col-sm-3 col-xs-2">
+						<h1>АЛЛО</h4>
+					</div>
+					<div class="col-md-2 col-sm-2 col-xs-2 box31">
+						<a href="#">
+							<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+							Де отримати</a>
+					</div>
+					<div class="col-md-2 col-sm-2 col-xs-2 box31">
+						<a href="#">
+							<span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+							Алло-обмін</a>
+					</div>
+					<div class="col-md-2 col-sm-2 col-xs-2 box31">
+						<a href="#">
+							<span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
+							Гарантія ціни</a>
+					</div>
+					<div class="col-md-2 col-sm-2 col-xs-2 box31">
+						<a href="#">
+							<span class="glyphicon glyphicon-hourglass" aria-hidden="true"></span>
+							Розстрочка</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="row">
+			
+			<div class="menu col-md-offset-1 col-md-3 col-sm-offset-1 col-sm-3">
+				<ul class="nav nav-pills">
+  					<li role="presentation" class="active"><a href="#" ng-click="showShopProduct()" 
+  						add-class="active">Товари</a></li>
+  					<li role="presentation"><a href="#" ng-click="showShopCart()" 
+  						add-class="active" ><i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i> Корзина
+  						<span class="badge mybadge" ng-show="cartBadge>0">{{cartBadge}}</span>
+  					</a></li>
+				</ul>
+			</div>
+
+			<!-- carousel -->
+			<div class="col-md-offset-1 col-md-7">
+				<section id="carousel" ng-carousel ng-init="curSlide=1; numSlides=6"
+	      			ng-swipe-right="curSlide=curSlide-1" 
+	      			ng-swipe-left="curSlide=curSlide+1">
+	      			<ul>
+	        			<li><img src="carousel/001.jpg" />
+	        			<li><img src="carousel/002.jpg" />
+	        			<li><img src="carousel/003.jpg" />
+	        			<li><img src="carousel/004.jpg" />
+	        			<li><img src="carousel/005.jpg" />
+	      			</ul>
+	      			<div id="prev-button" ng-hide="curSlide==1" ng-click="curSlide=curSlide-1"> &lt; </div>
+	      			<div id="next-button" ng-hide="curSlide==numSlides" ng-click="curSlide=curSlide+1">&gt; </div>
+	    		</section>
+			</div>
+
+		</div>
+
+
+	<div ng-controller="ProductCtrl" class="container">
+		<ng-include src="'Views/shopproduct.html'" ng-show="currentView=='shopProduct'"></ng-include>
+		<ng-include src="'Views/details.html'" ng-show="currentView=='details'"></ng-include>
+		<div ng-controller="CartCtrl">
+			<ng-include src="'Views/shopcart.html'" ng-show="currentView=='shopCart'"> </ng-include>
+			<ng-include src="'Views/cartorder.html'" ng-show="currentView=='cartOrder'"> </ng-include>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="info col-md-offset-1 col-md-10 col-sm-offset-1 col-sm-10 col-xs-offset-1 col-xs-10">
+			<div class="row">
+				<div class="info2 col-md-4 col-sm-4">
+					<h4>Корисна інформація</h4>
+					<a href="#">Переглянуті товари</a>
+					<a href="#">Про нас</a>
+					<a href="#"> Співпраця</a>
+					<a href="#">Статті</a>
+				</div>
+				<div class="info3 col-md-4 col-sm-4">
+					<h4>Ми в соцмережах:</h4>
+					<a href="#"><img src="./social/facebook.png"></a>
+					<a href="#"><img src="./social/vkontakte.png"></a>
+					<a href="#"><img src="./social/twitter.png"></a>
+					<a href="#"><img src="./social/googleplus.png"></a>
+					<a href="#"><img src="./social/odnoklassniki.png"></a>
+				</div>
+				<div class="info4 col-md-4 col-sm-4">
+					<h4>Замовити по телефону</h4>
+					<p>044-234-57-51</p>
+					<p>067-321-54-94</p>
+					<p>050-997-54-42</p>
+					<p>093-455-68-22</p>
+					<a href="#">Зворотний дзвінок</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+</body>
+</html>

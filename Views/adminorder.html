@@ -1,0 +1,95 @@
+
+  <!--   <button ng-click="showOrders()">Show Orders</button> -->
+
+<table class="table table-bordered table-striped" ng-repeat="item in orders">
+        
+        <tr>
+            <td><b>Замовлення №</b>{{item._id}} 
+                {{item.mail}}
+            </td>
+        </tr>
+ </table>       
+
+   <table class="table table-bordered table-striped" ng-repeat="item in orders">
+        
+        <tr>
+        	<td><b>Замовлення №</b>{{item._id}} 
+        		<button class="btn btn-xs btn-success" ng-click="finalOrder(item)">Оформити</button>
+        		<button class="btn btn-xs btn-success" ng-click="deleteOrder(item)">Відмінити</button> 
+        	</td>
+        </tr>
+
+        <tr>
+        	<td><b>Замовник:</b></td>
+        </tr>
+
+        <tr>
+        	<td>
+        		<table class="mytable">
+        			<tr>
+        				<td>{{item.username}}</td>
+        				<td>{{item.mail}}</td>
+        				<td>{{item.phone}}</td>
+        			</tr>
+        		</table>
+        	</td>
+        </tr>
+
+        <tr>
+        	<td><b>Товари:</b></td>
+        </tr>
+
+        <tr ng-repeat="subitem in item.products">
+        	<td>
+        		<table class="mytable">
+        			<tr>
+        				<td>{{subitem.name}}</td>
+        				<td>{{subitem.descname}}</td>
+        				<td>{{subitem.newcount}}</td>
+        				<td>{{subitem.newprice}}</td>
+        				<td><button class="btn btn-xs btn-success" ng-click="editOrderItem(subitem)">Редагувати</button>
+                            <button class="btn btn-xs btn-success" ng-click="cancelOrder(subitem, item)">Відмінити</button>
+                            </td>
+        			</tr>
+        		</table>
+        	</td>
+        </tr>
+
+        <tr>
+        	<td><b>Загальна вартість: {{item.total}}</b></td>
+        </tr>
+
+    </table>
+
+
+
+
+
+
+
+
+
+<!-- <form name="MyForm" novalidate>
+					
+	<div class="well">
+						
+		<div class="form-group">
+			<label>Ім'я:</label>
+			<input type="text" class="form-control" ng-model="orders.name">
+		</div>
+
+		<div class="form-group">
+			<label>Електронна пошта:</label>
+			<input type="text" class="form-control" ng-model="orders.mail">
+		</div>
+
+		<div class="form-group">
+			<label>Телефон:</label>
+			<input type="text" class="form-control" ng-model="orders.telephone">
+		</div>
+
+		<button ng-click="send(orders)">Відправити замовлення</button>
+
+	</div>
+
+</form> -->
